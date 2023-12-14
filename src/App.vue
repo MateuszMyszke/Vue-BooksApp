@@ -16,17 +16,7 @@
       :booksLength="books.length" />
 
     <!-- add book form -->
-    <form @submit.prevent="handleSubmit">
-      <label>
-        Title:
-        <input v-model="form.title" type="text" name="title">
-      </label>
-      <label>
-        price:
-        <input v-model="form.price" type="number" name="price">
-      </label>
-      <button>Add book</button>
-    </form>
+    <bookForm @add="addBook" />
 
   </div>
 </template>
@@ -34,6 +24,7 @@
 <script>
 import BooksLengthMsg from './components/BooksLengthMsg.vue'
 import BooksList from './components/BooksList.vue'
+import BookForm from './components/BookForm.vue'
 
 export default {
   name: 'App',
@@ -57,12 +48,10 @@ export default {
     removeBook (index) {
       this.books.splice(index, 1)
     },
-    handleSubmit (){
-      this.books.push({ ...this.form })
-      this.form.title = '';
-      this.form.price = 0;
+    addBook (book) {
+      this.books.push({ ...book })
     }
   },
-  components: { BooksList, BooksLengthMsg }
+  components: { BooksList, BooksLengthMsg, BookForm }
 }
 </script>
