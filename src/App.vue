@@ -7,14 +7,9 @@
     </header>
 
     <!-- books list -->
-    <ul>
-      <li
-        :key="index"
-        v-for="(book, index) in books">
-        {{ book.title }}, {{ book.price }}
-        <button @click="removeBook(index)">Remove</button>
-      </li>
-    </ul>
+    <books-list 
+      :removeBook="removeBook"
+      :books="books" />
 
     <!-- no books message -->
     <div>
@@ -49,6 +44,8 @@
 </template>
 
 <script>
+import BooksList from './components/BooksList.vue'
+
 export default {
   name: 'App',
   data: () => ({
@@ -69,13 +66,14 @@ export default {
   }),
   methods: {
     removeBook (index) {
-    this.books.splice(index, 1)
+      this.books.splice(index, 1)
     },
     handleSubmit (){
       this.books.push({ ...this.form })
       this.form.title = '';
       this.form.price = 0;
     }
-  }
+  },
+  components: { BooksList }
 }
 </script>
