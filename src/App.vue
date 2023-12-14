@@ -12,20 +12,8 @@
       :books="books" />
 
     <!-- no books message -->
-    <div>
-      <div v-if="books.length > 5">
-        <p>{{ books.length }} books</p>
-      </div>
-      <div v-else-if="books.length > 1">
-        <p>Not too many of them…</p>
-      </div>
-      <div v-else-if="books.length === 1">
-        <p>One single book!</p>
-      </div>
-      <div v-else>
-        <p>Go get some books!</p>
-      </div>
-    </div>
+    <booksLengthMsg 
+      :booksLength="books.length" />
 
     <!-- add book form -->
     <form @submit.prevent="handleSubmit">
@@ -44,6 +32,7 @@
 </template>
 
 <script>
+import BooksLengthMsg from './components/BooksLengthMsg.vue'
 import BooksList from './components/BooksList.vue'
 
 export default {
@@ -74,6 +63,6 @@ export default {
       this.form.price = 0;
     }
   },
-  components: { BooksList }
+  components: { BooksList, BooksLengthMsg }
 }
 </script>
