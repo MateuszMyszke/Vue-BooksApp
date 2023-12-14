@@ -5,7 +5,7 @@
         :key="index"
         v-for="(book, index) in books">
           {{ book.title }}, {{ book.price }}
-          <button @click="removeBook(index)">Remove</button>
+          <button @click="$emit('remove', index)">Remove</button>
       </li>
     </ul>
     <p v-show="!books.length">No books...</p>
@@ -18,10 +18,6 @@ export default {
   props: {
     books: {
       type: Array,
-      required: true
-    },
-    removeBook: {
-      type: Function,
       required: true
     }
   }

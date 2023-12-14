@@ -8,7 +8,7 @@
 
     <!-- books list -->
     <books-list 
-      :removeBook="removeBook"
+      @remove="removeBook"
       :books="books" />
 
     <!-- no books message -->
