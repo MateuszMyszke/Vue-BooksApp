@@ -18,6 +18,7 @@
     <!-- add book form -->
     <bookForm @add="addBook" />
 
+    <booksSummary :books="books"/>
   </div>
 </template>
 
@@ -25,6 +26,7 @@
 import BooksLengthMsg from './components/BooksLengthMsg.vue'
 import BooksList from './components/BooksList.vue'
 import BookForm from './components/BookForm.vue'
+import BooksSummary from './components/BooksSummary.vue'
 
 export default {
   name: 'App',
@@ -52,6 +54,6 @@ export default {
       this.books.push({ ...book })
     }
   },
-  components: { BooksList, BooksLengthMsg, BookForm }
+  components: { BooksList, BooksLengthMsg, BookForm, BooksSummary }
 }
 </script>
